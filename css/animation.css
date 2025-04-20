@@ -1,0 +1,72 @@
+/* Bounce Animation for Coming Soon */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.coming-soon p {
+    animation: bounce 2s infinite;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title, .approach-card, .involved-card, .event-card, .media-card {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Delay animations for staggered effect */
+.approach-card:nth-child(1) { animation-delay: 0.1s; }
+.approach-card:nth-child(2) { animation-delay: 0.3s; }
+.approach-card:nth-child(3) { animation-delay: 0.5s; }
+
+.involved-card:nth-child(1) { animation-delay: 0.1s; }
+.involved-card:nth-child(2) { animation-delay: 0.3s; }
+.involved-card:nth-child(3) { animation-delay: 0.5s; }
+
+/* Button Pulse Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(230, 57, 70, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);
+    }
+}
+
+.btn:hover, .submit-btn:hover {
+    animation: pulse 1s infinite;
+}
+
+/* Loading Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--white);
+    animation: spin 1s ease-in-out infinite;
+    margin-left: 10px;
+}

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWA News Gallery</title>
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.photo-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.photo-gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.news-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.gallery-caption {
+    padding: 15px;
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 15px;
+    background: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background: #1a252f;
+}
+
+/* For mobile */
+@media (max-width: 600px) {
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Fullscreen Overlay Styles */
+.fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+}
+
+.fullscreen-content {
+    position: relative;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen-overlay img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+}
+
+.nav-controls {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    z-index: 1001;
+}
+
+.nav-button {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1002;
+    transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.image-counter {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 15px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+}
+
+/* Keyboard navigation instructions */
+.keyboard-nav-info {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+    </style>
+</head>
+<body>
+    <a href="./index.html" class="back-button">← Back to Main</a>
+    <h1 style="text-align: center; margin: 20px 0;">NWA News Archive</h1>
+
+    <center>
+        <p>
+            "NWA has held press meets across India, featured on top TV channels and in leading newspapers like Tamil, English, Hindi, Malayalam, Kannada, and Gujarati. Here are a few highlights for your view."
+        </p>
+    </center>
+    
+    <div class="photo-gallery" id="autoGallery"></div>
+
+    <div id="fullscreenOverlay" class="fullscreen-overlay">
+        <button id="closeButton" class="close-button" onclick="closeFullscreen()" aria-label="Close fullscreen view">✕</button>
+        
+        <div class="fullscreen-content">
+            <div class="nav-controls">
+                <button id="prevButton" class="nav-button" onclick="navigateImages(-1)" aria-label="Previous image">❮</button>
+                <button id="nextButton" class="nav-button" onclick="navigateImages(1)" aria-label="Next image">❯</button>
+            </div>
+            
+            <img id="fullscreenImage" src="" alt="Fullscreen Image">
+            <div id="imageCounter" class="image-counter">1 / 1</div>
+        </div>
+        
+        <div class="keyboard-nav-info">
+            Use arrow keys (← →) to navigate or ESC to close
+        </div>
+    </div>
+
+    <script>
+        // 1. List all your image filenames (just names, no paths)
+        const imageNames = [
+            "news s 1.jpg",
+            "news s 2.png",
+            "news s 3.png",
+            "news s 4.png",
+            "news s 5.jpg",
+            "news s 6.png",
+            "news s 7.jpg",
+            "news s 8.jpg",
+            "news s 9.png",
+            "news s 10.png",
+            "news s 11.png",
+            "news s 12.png",
+            "news s 13.png",
+            "news s 14.jpg",
+            "news s 15.jpg",
+            "news s 16.jpg",
+            "news s 17.png",
+            "news s 18.png",
+            "news s 19.png",
+            "news s 20.png",
+            "news s 21.png",
+            "news s 22.jpg",
+            "news s 23.png",
+            "news s 24.png",
+            "news s 25.png",
+            "news s 26.jpg",
+            "news s 27.jpg",
+            "news s 28.png",
+            "news s 29.jpg",
+            "news s 30.jpg",
+            "news s 31.jpg",
+            "news s 32.jpg",
+            "news s 34.png",
+            "news s 35.png",
+            "news s 36.jpg",
+            "news s 37.jpg",
+            "news s 38.jpg",
+            "news s 39.jpg",
+            "news s 40.png",
+            "news s 41.jpg",
+            "news s 42.jpg",
+            "news s 43.jpg",
+            "news s 44.jpg",
+            "news s 45.jpg",
+            "news s 46.jpg",
+            "news s 47.jpg",
+            "news s 48.jpg",
+            "news s 49.jpg",
+            "news s 50.png",
+            "news s 53.png",
+            "news s 54.jpg",
+            "news s 55.png",
+            "news s 56.png",
+            "news s 58.jpg",
+            "news s 59.jpg",
+            "news 2 two [22].png",
+            "news 2 two [33].png",
+            "news 2 two [44].png",
+            "news 2 two [55].png",
+            "news s last (1).png",
+            "news s last (2).png",
+            "news s last (4).jpg",
+            "news s last (5).jpg",
+            "news media last (1).jpg",
+            "news media last (2).jpg",
+            "news media last (3).jpg",
+        ];
+
+        const folderPath = "images/news/"; // Your image folder
+        let currentImageIndex = 0;
+        const fullImagePaths = imageNames.map(name => folderPath + name);
+
+        // 2. Auto-generate HTML
+        const gallery = document.getElementById('autoGallery');
+
+        imageNames.forEach((image, index) => {
+            const imgPath = folderPath + image;
+            gallery.innerHTML += `<img src="${imgPath}" alt="NWA News Image ${index + 1}" onclick="openFullscreen('${imgPath}', ${index})">`;
+        });
+
+        function openFullscreen(src, index) {
+            const overlay = document.getElementById('fullscreenOverlay');
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            currentImageIndex = index;
+            fullscreenImage.src = src;
+            overlay.style.display = 'flex';
+            updateImageCounter();
+            
+            // Add event listener for keyboard navigation
+            document.addEventListener('keydown', handleKeyNavigation);
+        }
+
+        function closeFullscreen() {
+            const overlay = document.getElementById('fullscreenOverlay');
+            overlay.style.display = 'none';
+            
+            // Remove event listener for keyboard navigation
+            document.removeEventListener('keydown', handleKeyNavigation);
+        }
+
+        function navigateImages(direction) {
+            currentImageIndex = (currentImageIndex + direction + fullImagePaths.length) % fullImagePaths.length;
+            document.getElementById('fullscreenImage').src = fullImagePaths[currentImageIndex];
+            updateImageCounter();
+        }
+
+        function updateImageCounter() {
+            document.getElementById('imageCounter').textContent = `${currentImageIndex + 1} / ${fullImagePaths.length}`;
+        }
+
+        function handleKeyNavigation(e) {
+            if (e.key === 'ArrowRight') {
+                navigateImages(1);
+            } else if (e.key === 'ArrowLeft') {
+                navigateImages(-1);
+            } else if (e.key === 'Escape') {
+                closeFullscreen();
+            }
+        }
+
+        // Add swipe functionality for touch devices
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.getElementById('fullscreenOverlay').addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.getElementById('fullscreenOverlay').addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left, show next image
+                navigateImages(1);
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Swipe right, show previous image
+                navigateImages(-1);
+            }
+        }
+
+        // Load all news items from main page (if needed)
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsGallery = document.querySelector('.news-gallery');
+            if (newsGallery) {
+                const newsItems = JSON.parse(localStorage.getItem('nwaNewsItems')) || [];
+                
+                newsItems.forEach((item, index) => {
+                    newsGallery.innerHTML += `
+                        <div class="gallery-item">
+                            <img src="${item.image}" alt="${item.title}" onclick="openFullscreen('${item.image}', ${fullImagePaths.length + index})">
+                            <div class="gallery-caption">
+                                <h3>${item.title}</h3>
+                                <a href="${item.link || '#'}" class="read-more">Read More</a>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                // Add news items to fullImagePaths if they exist
+                newsItems.forEach(item => {
+                    if (item.image) fullImagePaths.push(item.image);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

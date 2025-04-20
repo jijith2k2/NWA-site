@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWA Membership Registration</title>
+    <link rel="stylesheet" href="styles/form.css">
+</head>
+<body>
+    <div class="registration-container">
+        <div class="logo">
+            <img src="images/nwa-logo.png" alt="NWA Logo">
+            <h1>Membership Registration</h1>
+        </div>
+        
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="photo">Upload Photo (Max 1MB)</label>
+                <input type="file" id="photo" accept="image/*" required>
+                <div id="photoPreview"></div>
+            </div>
+            
+            <button type="submit" id="submitBtn">Register & Pay ₹99</button>
+        </form>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="payment.js"></script>
+</body>
+</html>

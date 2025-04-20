@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awareness Pamphlet Gallery</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 15px;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .back-button:hover {
+            background: #1a2530;
+        }
+        
+        .page-title {
+            text-align: center; 
+            margin: 20px 0;
+            color: #2c3e50;
+        }
+        
+        .protest-description {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+            text-align: center;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        @media (max-width: 600px) {
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Custom Lightbox styling */
+        .lb-data .lb-caption {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .lb-nav a.lb-prev, .lb-nav a.lb-next {
+            opacity: 0.5;
+        }
+        
+        .lb-nav a.lb-prev:hover, .lb-nav a.lb-next:hover {
+            opacity: 1;
+        }
+
+        /* Make the touch targets larger for swiping */
+        .lb-nav a.lb-prev, .lb-nav a.lb-next {
+            height: 100%;
+            width: 50%;
+        }
+
+        /* Add swipe instructions */
+        .swipe-instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .swipe-instructions.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <a href="./index.html" class="back-button">← Back to Protests</a>
+    <h1 class="page-title">Awareness Pamphlet Collection</h1>
+    <div class="protest-description">
+        <p>"The Networkers Welfare Association (NWA) is actively raising awareness about fraudulent MLM investment schemes by distributing informative pamphlets to the public. Don't let yourself fall victim to scams—get your FREE pamphlet today and learn how to spot these deceptive schemes. A few pamphlets for your views"</p>
+    </div>
+
+    <div class="photo-gallery" id="pamphletGallery"></div>
+    
+    <!-- Add swipe instructions element -->
+    <div id="swipeInstructions" class="swipe-instructions">
+        Swipe left or right to navigate
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    
+    <script>
+        const pamphletImages = [
+            "flyer. 1.png",
+            "flyer. 2.png",
+            "flyer. 3.png",
+            "flyer. 4.png",
+            "flyer. 5.png",
+            "flyer. 6.png",
+            "flyer. 7.png",
+            "flyer. 8.png",
+            "flyer. 10.jpg",
+            "flyer. 9.jpg",
+            "flyer. 11.png",
+            "flyer. 12.png",
+            "flyer. 13.png",
+            "flyer. 14.png",
+            "flyer. 15.png",
+            "flyer. 16.png",
+            "flyer. 17.png",
+            "flyer. 18.png",
+            "flyer. 19.png",
+            "flyer. 20.png"
+        ];
+
+        const gallery = document.getElementById('pamphletGallery');
+        const folderPath = "images/flyer/";
+
+        pamphletImages.forEach((image, index) => {
+            gallery.innerHTML += `
+                <a href="${folderPath}${image}" data-lightbox="pamphlets" data-title="Pamphlet ${index+1} of ${pamphletImages.length}">
+                    <img src="${folderPath}${image}" alt="Awareness Pamphlet ${index+1}">
+                </a>
+            `;
+        });
+        
+        // Configure Lightbox options once the document is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            lightbox.option({
+                'alwaysShowNavOnTouchDevices': true,
+                'wrapAround': true,
+                'disableScrolling': true,
+                'fadeDuration': 300,
+                'resizeDuration': 300,
+                'showImageNumberLabel': true
+            });
+            
+            // Add keyboard navigation for arrow keys
+            document.addEventListener('keydown', function(e) {
+                if (document.querySelector('.lb-container')) {
+                    if (e.key === 'ArrowRight') {
+                        document.querySelector('.lb-next').click();
+                    } else if (e.key === 'ArrowLeft') {
+                        document.querySelector('.lb-prev').click();
+                    }
+                }
+            });
+
+            // Set up swipe event handling with Hammer.js
+            const swipeInstructions = document.getElementById('swipeInstructions');
+            
+            // Enhance Lightbox with touch swipe functionality
+            lightbox.option('onShow', function() {
+                // Show swipe instructions briefly
+                swipeInstructions.classList.add('show');
+                setTimeout(() => {
+                    swipeInstructions.classList.remove('show');
+                }, 2000);
+                
+                // Wait for lightbox to fully render
+                setTimeout(() => {
+                    // Apply Hammer.js to the lightbox container
+                    if (document.querySelector('.lb-container')) {
+                        const lightboxContainer = document.querySelector('.lb-container');
+                        const hammer = new Hammer(lightboxContainer);
+                        
+                        // Configure horizontal swipe recognition
+                        hammer.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+                        
+                        // Handle swipe events
+                        hammer.on('swipeleft', function() {
+                            document.querySelector('.lb-next').click();
+                        });
+                        
+                        hammer.on('swiperight', function() {
+                            document.querySelector('.lb-prev').click();
+                        });
+                    }
+                }, 500);
+            });
+            
+            // Handle lightbox changes - needed because the DOM elements get recreated
+            $(document).on('DOMNodeInserted', '.lb-container', function() {
+                // Only add hammer once
+                if (!this.hammerInitialized) {
+                    this.hammerInitialized = true;
+                    
+                    const hammer = new Hammer(this);
+                    hammer.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+                    
+                    hammer.on('swipeleft', function() {
+                        document.querySelector('.lb-next').click();
+                    });
+                    
+                    hammer.on('swiperight', function() {
+                        document.querySelector('.lb-prev').click();
+                    });
+                }
+            });
+        });
+        
+        // Add direct swipe functionality as a fallback - will work even if Hammer.js doesn't load
+        document.addEventListener('touchstart', handleTouchStart, false);
+        document.addEventListener('touchmove', handleTouchMove, false);
+        document.addEventListener('touchend', handleTouchEnd, false);
+        
+        let xDown = null;
+        let yDown = null;
+        let xUp = null;
+        let yUp = null;
+        let timeDown = null;
+        let isSwiping = false;
+        
+        function handleTouchStart(evt) {
+            if (!document.querySelector('.lb-container')) return;
+            
+            xDown = evt.touches[0].clientX;
+            yDown = evt.touches[0].clientY;
+            timeDown = Date.now();
+            isSwiping = true;
+        }
+        
+        function handleTouchMove(evt) {
+            if (!isSwiping) return;
+            
+            xUp = evt.touches[0].clientX;
+            yUp = evt.touches[0].clientY;
+        }
+        
+        function handleTouchEnd(evt) {
+            if (!isSwiping || !xDown || !yDown || !xUp || !yUp) {
+                resetSwipe();
+                return;
+            }
+            
+            const xDiff = xDown - xUp;
+            const yDiff = yDown - yUp;
+            const timeDiff = Date.now() - timeDown;
+            
+            // Only proceed if it's a horizontal swipe and not too slow
+            if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 50 && timeDiff < 300) {
+                if (xDiff > 0) {
+                    // Swipe left
+                    if (document.querySelector('.lb-next')) {
+                        document.querySelector('.lb-next').click();
+                    }
+                } else {
+                    // Swipe right
+                    if (document.querySelector('.lb-prev')) {
+                        document.querySelector('.lb-prev').click();
+                    }
+                }
+            }
+            
+            resetSwipe();
+        }
+        
+        function resetSwipe() {
+            xDown = null;
+            yDown = null;
+            xUp = null;
+            yUp = null;
+            timeDown = null;
+            isSwiping = false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #e74c3c;
+    --light: #ecf0f1;
+    --dark: #1a252f;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card-container {
+    max-width: 800px;
+    margin: 20px;
+    text-align: center;
+}
+
+.membership-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.card-header {
+    background-color: var(--primary);
+    color: white;
+    padding: 20px;
+}
+
+.card-header img {
+    max-width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.card-header h2 {
+    margin: 10px 0 5px 0;
+    font-size: 1.5rem;
+}
+
+.card-header p {
+    margin: 0;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.card-body {
+    display: flex;
+    padding: 30px;
+    text-align: left;
+}
+
+.photo-container {
+    flex: 0 0 150px;
+    margin-right: 30px;
+}
+
+#memberPhoto {
+    width: 150px;
+    height: 180px;
+    background-color: #f5f5f5;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--primary);
+    border-radius: 5px;
+}
+
+.member-info {
+    flex: 1;
+}
+
+.member-info h3 {
+    margin: 0 0 15px 0;
+    color: var(--primary);
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--secondary);
+    padding-bottom: 10px;
+}
+
+.member-info p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.member-info strong {
+    color: var(--primary);
+    display: inline-block;
+    width: 100px;
+}
+
+.card-footer {
+    background-color: #f9f9f9;
+    padding: 15px;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+}
+
+.card-footer small {
+    display: block;
+    margin-top: 5px;
+    color: #777;
+}
+
+#downloadBtn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+#downloadBtn:hover {
+    background-color: var(--secondary);
+}
+
+.home-link {
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .photo-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    #memberPhoto {
+        margin: 0 auto;
+    }
+}

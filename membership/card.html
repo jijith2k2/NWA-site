@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWA Membership Card</title>
+    <link rel="stylesheet" href="styles/card.css">
+</head>
+<body>
+    <div class="card-container">
+        <div class="membership-card" id="membershipCard">
+            <div class="card-header">
+                <img src="images/nwa-logo.png" alt="NWA Logo">
+                <h2>Network Welfare Association</h2>
+                <p>Official Member Card</p>
+            </div>
+            
+            <div class="card-body">
+                <div class="photo-container">
+                    <div id="memberPhoto"></div>
+                </div>
+                
+                <div class="member-info">
+                    <h3 id="memberName"></h3>
+                    <p><strong>Member ID:</strong> <span id="memberId"></span></p>
+                    <p><strong>Name:</strong> <span id="joinDate"></span></p>
+                    <p><strong>Place:</strong> <span id="memberMobile"></span></p>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <p>This card is proof of membership in the Networkers Welfare Association</p>
+                
+            </div>
+        </div>
+        
+        <button id="downloadBtn">Download Membership Card</button>
+        <a href="/" class="home-link">Return to Home</a>
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get member ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const memberId = urlParams.get('member_id');
+            
+            if (!memberId) {
+                alert('Invalid member ID');
+                window.location.href = '/';
+                return;
+            }
+            
+            // Fetch member data
+            fetch(`api/get_member.php?member_id=${memberId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayMemberCard(data.member);
+                    } else {
+                        alert('Member not found');
+                        window.location.href = '/';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error loading member data');
+                    window.location.href = '/';
+                });
+            
+            // Download button
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                html2canvas(document.getElementById('membershipCard')).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = `NWA-MemberCard-${memberId}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            });
+        });
+        
+        function displayMemberCard(member) {
+            document.getElementById('memberName').textContent = member.name;
+            document.getElementById('memberId').textContent = member.member_id;
+            document.getElementById('memberMobile').textContent = member.mobile;
+            
+            // Format dates
+            const joinDate = new Date(member.created_at);
+            document.getElementById('joinDate').textContent = joinDate.toLocaleDateString();
+            
+            const validUntil = new Date(joinDate);
+            validUntil.setFullYear(validUntil.getFullYear() + 1);
+            document.getElementById('validUntil').textContent = validUntil.toLocaleDateString();
+            
+            // Display photo
+            if (member.photo) {
+                document.getElementById('memberPhoto').style.backgroundImage = 
+                    `url(data:image/jpeg;base64,${member.photo})`;
+            }
+        }
+    </script>
+</body>
+</html>

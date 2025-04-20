@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Nadu Protest Gallery</title>
+    <style>
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 15px;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .page-title {
+            text-align: center; 
+            margin: 20px 0;
+            color: #2c3e50;
+        }
+        
+        .protest-description {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 600px) {
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+</head>
+<body>
+    <a href="./index.html" class="back-button">← Back to Protests</a>
+    <h1 class="page-title">Tamil Nadu Rising for Justice</h1>
+    <div class="protest-description">
+        <p>Documenting our peaceful protests demanding justice and equality for all Tamil Nadu citizens. These images capture the spirit of our movement and the solidarity of our community.</p>
+    </div>
+
+    <div class="photo-gallery" id="tnGallery"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    
+    <script>
+        const tnProtestImages = [
+            "T Protest (1).jpg",
+            "T Protest (2).png",
+            "T Protest (3).png",
+            "T Protest (4).png",
+            "T Protest (5).png",
+            "T Protest (6).jpg",
+            "T Protest (7).png",
+            "T Protest (8).png",
+            "T Protest (9).png",
+            "T Protest (10).png",
+        ];
+
+        
+
+        const gallery = document.getElementById('tnGallery');
+        const folderPath = "images/protest/";
+
+        tnProtestImages.forEach(image => {
+            gallery.innerHTML += `
+                <a href="${folderPath}${image}" data-lightbox="tn-protest" data-title="Tamil Nadu Protest">
+                    <img src="${folderPath}${image}" alt="Tamil Nadu Protest">
+                </a>
+            `;
+        });
+    </script>
+</body>
+</html>

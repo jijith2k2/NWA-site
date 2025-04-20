@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Main Page (visible by default) -->
+<div id="mainPage">
+    <!-- Your existing website content -->
+  </div>
+  
+  <!-- Member Page (hidden until clicked) -->
+  <div id="memberPage" style="display: none;">
+    <button id="backButton">← Back to Main</button>
+    <h2>NWA Members</h2>
+    
+    <!-- Registration Form -->
+    <div id="memberForm">
+      <h3>Register New Member</h3>
+      <input type="text" id="nameInput" placeholder="Full Name" required>
+      <input type="email" id="emailInput" placeholder="Email" required>
+      <input type="file" id="photoInput" accept="image/*" required>
+      <button id="submitButton">Register</button>
+    </div>
+  
+    <!-- Member Cards Container -->
+    <div id="memberCards"></div>
+  </div>
+</body>
+</html>

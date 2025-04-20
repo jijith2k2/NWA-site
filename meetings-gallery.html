@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWA Meetings Archive</title>
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.photo-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.photo-gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 15px;
+    background: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background: #1a252f;
+}
+
+/* For mobile */
+@media (max-width: 600px) {
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Fullscreen Overlay Styles */
+.fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+}
+
+.fullscreen-content {
+    position: relative;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen-overlay img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+.nav-controls {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+    box-sizing: border-box;
+    z-index: 1001;
+}
+
+.nav-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1002;
+    transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.image-counter {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 15px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+}
+
+/* Keyboard navigation instructions */
+.keyboard-nav-info {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+    </style>
+</head>
+<body>
+    <a href="./index.html" class="back-button">← Back to Main</a>
+    <h1 style="text-align: center; margin: 20px 0;">NWA Meetings Archive</h1>
+    
+    <center>
+        <p>"Spreading awareness, empowering communities! NWA has successfully conducted impactful awareness meetings across India — here are a few for your views!"</p>
+    </center>
+    
+    <div class="photo-gallery" id="autoGallery"></div>
+
+    <div id="fullscreenOverlay" class="fullscreen-overlay">
+        <button id="closeButton" class="close-button" onclick="closeFullscreen()" aria-label="Close fullscreen view">✕</button>
+        
+        <div class="fullscreen-content">
+            <div class="nav-controls">
+                <button id="prevButton" class="nav-button" onclick="navigateImages(-1)" aria-label="Previous image">❮</button>
+                <button id="nextButton" class="nav-button" onclick="navigateImages(1)" aria-label="Next image">❯</button>
+            </div>
+            
+            <img id="fullscreenImage" src="" alt="Fullscreen Image">
+            <div id="imageCounter" class="image-counter">1 / 1</div>
+        </div>
+        
+        <div class="keyboard-nav-info">
+            Use arrow keys (← →) to navigate or ESC to close
+        </div>
+    </div>
+
+    <script>
+        // 1. List all your image filenames (just names, no paths)
+        const imageNames = [
+            "meeting 1.png",
+            "meetings 2.jpg",
+            "meetings 3.png",
+            "meetings 4.png",
+            "meetings 5.png",
+            "meetings 6.jpg",
+            "meetings 7.jpg",
+            "meetings 8.jpg",
+            "meetings 9.jpg",
+            "meetings 10.jpg",
+            "meetings 11.jpg",
+            "meetings 12.jpg",
+            "meetings 13.jpg",
+            "meetings 14.jpg",
+            "meetings 15.jpg",
+            "meetings 16.jpg",
+            "meetings 17.jpg",
+            "meetings 18.jpg",
+            "meetings 19.jpg",
+            "meetings 20.jpg",
+            "meetings 21.png",
+            "meetings 22.png",
+            "meetings 23.jpg",
+            "meetings 24.jpg",
+            "meetings 25.jpg",
+            "meetings 26.jpg",
+            "meetings 27.jpg",
+            "meetings 28.jpg",
+            "meetings 29.jpg",
+            "meetings 30.jpg",
+            "meetings 31.jpg",
+            "meetings 32.jpg",
+            "meeting last (1).jpg",
+            "meeting last (2).jpg",
+            "meeting last (3).jpg",
+            "meeting last (4).jpg",
+            "meeting last (5).jpg",
+            "meeting last (6).jpg",
+            "meeting last (7).jpg",
+            "meeting last (8).jpg"
+        ];
+
+        const folderPath = "images/meetings/"; // Your image folder
+        let currentImageIndex = 0;
+        const fullImagePaths = imageNames.map(name => folderPath + name);
+
+        // 2. Auto-generate HTML
+        const gallery = document.getElementById('autoGallery');
+
+        imageNames.forEach((image, index) => {
+            const imgPath = folderPath + image;
+            gallery.innerHTML += `<img src="${imgPath}" alt="NWA Meeting Image ${index + 1}" onclick="openFullscreen('${imgPath}', ${index})">`;
+        });
+
+        function openFullscreen(src, index) {
+            const overlay = document.getElementById('fullscreenOverlay');
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            currentImageIndex = index;
+            fullscreenImage.src = src;
+            overlay.style.display = 'flex';
+            updateImageCounter();
+            
+            // Add event listener for keyboard navigation
+            document.addEventListener('keydown', handleKeyNavigation);
+        }
+
+        function closeFullscreen() {
+            const overlay = document.getElementById('fullscreenOverlay');
+            overlay.style.display = 'none';
+            
+            // Remove event listener for keyboard navigation
+            document.removeEventListener('keydown', handleKeyNavigation);
+        }
+
+        function navigateImages(direction) {
+            currentImageIndex = (currentImageIndex + direction + fullImagePaths.length) % fullImagePaths.length;
+            document.getElementById('fullscreenImage').src = fullImagePaths[currentImageIndex];
+            updateImageCounter();
+        }
+
+        function updateImageCounter() {
+            document.getElementById('imageCounter').textContent = `${currentImageIndex + 1} / ${fullImagePaths.length}`;
+        }
+
+        function handleKeyNavigation(e) {
+            if (e.key === 'ArrowRight') {
+                navigateImages(1);
+            } else if (e.key === 'ArrowLeft') {
+                navigateImages(-1);
+            } else if (e.key === 'Escape') {
+                closeFullscreen();
+            }
+        }
+
+        // Add swipe functionality for touch devices
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.getElementById('fullscreenOverlay').addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.getElementById('fullscreenOverlay').addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left, show next image
+                navigateImages(1);
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Swipe right, show previous image
+                navigateImages(-1);
+            }
+        }
+    </script>
+</body>
+</html>

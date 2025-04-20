@@ -1,0 +1,4230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWA - Network Welfare Association</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="./images/cropped-NWA-logo.png" alt="NWA Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1 class="text-4xl md:text-6xl font-bold text-center text-primary">Networkers Welfare Association </h1>
+
+                        <span class="established">Since 2009</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="navbar">
+                <!-- Hamburger menu input hack for CSS-only toggle -->
+                <input type="checkbox" id="hamburger-toggle" class="hamburger-checkbox">
+                <label for="hamburger-toggle" class="hamburger" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </label>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                    <!-- <li class="nav-item"><a href="#members" class="nav-link">Party Members</a></li> -->
+                    <li class="nav-item"><a href="#about" class="nav-link">About NWA</a></li>
+                    <li class="nav-item"><a href="#news" class="nav-link">News & Media</a></li>
+                    <li class="nav-item"><a href="#Events" class="nav-link">Events</a></li>
+                    <li class="nav-item"><a href="#people" class="nav-link">For the People</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <style>
+    /* General Styling */
+    
+    
+    /* Header Styling */
+    .header {
+        background-color: #f8f9fa;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+    }
+    
+    /* Logo Styling */
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .logo-img {
+        height: 90px;
+        width: auto;
+        border-radius: 5px;
+    }
+    
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .logo h1 {
+        font-size: 17px;
+        font-weight: 550;
+        color: #333;
+        margin: 0;
+    }
+    
+    .established {
+        font-size: 14px;
+        color: hsl(0, 10%, 32%);
+        font-style: italic;
+    }
+    
+    /* Navigation Menu */
+    .navbar {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+    }
+    
+    .nav-item {
+        position: relative;
+    }
+    
+    .nav-link {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 10px 0;
+        transition: color 0.3s ease;
+        display: block;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+        color: #0066cc;
+    }
+    
+    /* Hamburger Menu CSS-only toggle */
+    .hamburger-checkbox {
+        display: none;
+    }
+    
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 10px;
+        z-index: 1001;
+    }
+    
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease;
+        background-color: #333;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .hamburger {
+            display: block;
+        }
+        
+        .nav-menu {
+            position: fixed;
+            right: -100%;
+            top: 80px;
+            flex-direction: column;
+            background-color: white;
+            width: 100%;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            gap: 0;
+        }
+        
+        /* CSS-only toggle with checkbox hack */
+        .hamburger-checkbox:checked ~ .nav-menu {
+            right: 0;
+        }
+        
+        /* Hamburger icon animation */
+        .hamburger-checkbox:checked + .hamburger .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
+        .hamburger-checkbox:checked + .hamburger .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-checkbox:checked + .hamburger .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        /* Navigation items in mobile */
+        .nav-item {
+            margin: 10px 0;
+            width: 100%;
+        }
+        
+        .nav-link {
+            padding: 15px;
+            width: 100%;
+            display: inline-block;
+        }
+        
+        .nav-link:hover {
+            background-color: #f5f5f5;
+        }
+    }
+    
+    /* For very small screens */
+    @media (max-width: 576px) {
+        .logo-img {
+            height: 40px;
+        }
+        
+        .logo h1 {
+            font-size: 14px;
+        }
+        
+        .established {
+            font-size: 12px;
+        }
+    }
+    </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+    
+    // Mobile dropdown toggle
+    const dropdowns = document.querySelectorAll('.dropdown');
+    if (window.innerWidth <= 992) {
+        dropdowns.forEach(dropdown => {
+            const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            });
+        });
+    }
+    
+    // Adjust behavior on window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 992) {
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+});
+</script>
+
+
+
+
+
+<!-- Floating Contact Buttons -->
+<div class="floating-contacts">
+    <!-- WhatsApp Button (unchanged) -->
+    <a href="https://wa.me/+919940290394" class="whatsapp-button" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
+            <path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+    
+    <!-- Corrected Gmail Button -->
+    <a href="mailto:networkwelfareassociation@gmail.com" class="gmail-button" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" width="40" height="40">
+    </a>
+</div>
+
+
+
+<!-- Hero Banner Carousel -->
+
+    <style>
+        
+        /* Slider Container */
+        .hero-slider {
+    position: relative; ;
+    width: 1%;
+    height: 0;
+    padding-bottom: 58%; /* Adjust this percentage based on your desired aspect ratio */
+    overflow: hidden;
+    height: 1vh;
+    background-color: #7c7b94;;
+
+}
+
+.slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease;
+}
+        
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center; /* Vertical center */
+    justify-content: center; /* Horizontal center */
+    background-color: #f7f7fc; /* Fallback color */
+}
+            
+.slide img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: fill; /* Show entire image */
+    object-position: center;
+    background: #fcfcfd;
+    display: block;
+}
+        
+        /* Navigation */
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(237, 236, 241, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;  
+        }
+        
+        .slider-dot.active {
+            background: #fff;
+            transform: scale(1.2);
+        }
+        
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0px;
+            height: 0px;
+           
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slider-arrow.prev {
+            left: 0px;
+        }
+        
+        .slider-arrow.next {
+            right: 0px;
+        }
+        
+        /* Fullscreen Overlay */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+       /* Base Slider Styles */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #7c7b94; /* Match your image background color */
+}
+
+/* Responsive Height Control */
+.hero-slider {
+    height: 50vh; /* Balanced height for most screens */
+}
+
+/* For wider screens where you want to fill more space */
+@media (min-width: 1200px) {
+    .slide img {
+        height:90vh;
+        object-fit:fill; /* Switch to cover on very wide screens */
+        object-position: unset; /* Adjust based on your image content */
+        padding-bottom: 0%;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-slider {
+        height: 20vh; /* Taller on desktop */
+        padding-bottom: 43%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-slider {
+        height:     30vh; /* Shorter on mobile */
+        
+        
+        padding-bottom: 0%;
+    }
+}
+    </style>
+
+    <!-- Image Slider -->
+    <div class="hero-slider">
+        <div class="slider-container">
+            <div class="slide">
+                <img src="./images/Header/ultimate(1).png" alt="NWA Leadership">
+            </div>
+            <div class="slide">
+                <img src="./images/Header/ultimate(2).png" alt="Meetings and Events">
+            </div>
+            <div class="slide">
+                <img src="./images/Header/ultimate(3).png" alt="President of NWA">
+            </div>
+            <div class="slide">
+                <img src="./images/Header/ultimate(4).png" alt="Campaign Rally">
+            </div>
+            <div class="slide">
+                <img src="./images/Header/ultimate(5).png" alt="Policy Infographic">
+            </div>
+            <div class="slide">
+                <img src="./images/Header/ultimate(6).png" alt="Our Achievements">
+            </div>
+        </div>
+        
+        <button class="slider-arrow prev">❮</button>
+        <button class="slider-arrow next">❯</button>
+        
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </div>
+    
+    <!-- Fullscreen Viewer -->
+    <div class="fullscreen-overlay">
+        <span class="close-btn">×</span>
+        <img class="fullscreen-image" src="" alt="">
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider-container');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const fullscreenOverlay = document.querySelector('.fullscreen-overlay');
+            const fullscreenImage = document.querySelector('.fullscreen-image');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            let currentIndex = 0;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            let autoSlideInterval;
+            
+            // Initialize slider
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // Go to specific slide
+            function goToSlide(index) {
+                currentIndex = index;
+                updateSlider();
+                resetAutoSlide();
+            }
+            
+            // Next slide
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlider();
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlider();
+            }
+            
+            // Auto slide
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+            
+            // Fullscreen view
+            function openFullscreen(imgSrc) {
+                fullscreenImage.src = imgSrc;
+                fullscreenOverlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeFullscreen() {
+                fullscreenOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoSlide();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoSlide();
+            });
+            
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+            
+            // Touch events for mobile
+            slider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                clearInterval(autoSlideInterval);
+            }, {passive: true});
+            
+            slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startAutoSlide();
+            }, {passive: true});
+            
+            function handleSwipe() {
+                const diff = touchStartX - touchEndX;
+                if (diff > 50) {
+                    nextSlide(); // Swipe left
+                } else if (diff < -50) {
+                    prevSlide(); // Swipe right
+                }
+            }
+            
+            // Click to view fullscreen
+            slides.forEach(slide => {
+                const img = slide.querySelector('img');
+                img.addEventListener('click', () => {
+                    openFullscreen(img.src);
+                });
+            });
+            
+            closeBtn.addEventListener('click', closeFullscreen);
+            
+            // Close fullscreen when clicking outside image
+            fullscreenOverlay.addEventListener('click', (e) => {
+                if (e.target === fullscreenOverlay) {
+                    closeFullscreen();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeFullscreen();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetAutoSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    resetAutoSlide();
+                }
+            });
+            
+            // Start auto-slide
+            startAutoSlide();
+        });
+    </script>
+
+    <!-- Fullscreen Overlay -->
+    <div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreen()">
+        <img id="fullscreenImage" src="" alt="Fullscreen Image">
+    </div>
+</section>
+
+<style>
+    .fullscreen-overlay {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .fullscreen-overlay img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+</style>
+
+<script>
+    function openFullscreen(src) {
+        const overlay = document.getElementById('fullscreenOverlay');
+        const fullscreenImage = document.getElementById('fullscreenImage');
+        fullscreenImage.src = src;
+        overlay.style.display = 'flex'; // Show the overlay
+    }
+
+    function closeFullscreen() {
+        const overlay = document.getElementById('fullscreenOverlay');
+        overlay.style.display = 'none'; // Hide the overlay
+    }
+</script>
+
+
+
+
+
+
+<!-- Member Section -->
+<!-- <div id="members" class="approach-card">
+    <div class="card-icon">
+        <i class="fas fa-user-plus"></i>
+    </div>
+    <h3>Become a Member</h3>
+    <p>Building connections through community involvement and local leadership development.</p>
+    <a href="./membership/register.html" class="nav-item">Register Now<i class="fas fa-arrow-right"></i></a>
+</div> -->
+
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">About NWA</h2>
+            <div class="language-toggle">
+                <button class="lang-btn active" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="ta">தமிழ்</button>
+            </div>
+        </div>
+        
+        <div class="about-grid">
+            <!-- English Content -->
+            <div class="lang-content en-content">
+                <div class="intro-card">
+                    <div class="intro-content">
+                        <h3>Networkers Welfare Association (NWA)</h3>
+                        <div class="divider"></div>
+                        <p class="tagline">16 Years of Empowerment • Integrity • Impact • Zero donation</p>
+                        <p class="highlight">A Movement. A Mission. A Million Dreams United.</p>
+                    </div>
+                    <div class="intro-image">
+                        <img src="./images/cropped-NWA-logo.png" alt="NWA Team" class="responsive-img">
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <p>The Networkers Welfare Association (NWA), established on February 26th, 2009, and registered under Government Act No. 48/2009, has stood tall as the backbone of India's MLM industry. Our core mission is to safeguard the well-being of network marketing companies and MLM professionals while enhancing the positive image of the industry. Representing the voice of over 4 million networkers across the country.</p>
+                    <div class="emphasis-box">
+                        <p>We are not just an association —<br>We are a revolution.</p>
+                    </div>
+                </div>
+                
+                <div class="two-column-grid">
+                    <div class="content-card">
+                        <h4><i class="fas fa-bullseye icon"></i> What We Stand For</h4>
+                        <p>Direct selling, also known as multi-level marketing (MLM), is a business model where products or services are sold directly to consumers—bypassing traditional retail channels—through personal interactions, whether in-person, online, or over the phone. It empowers individuals to become entrepreneurs, build networks, and earn income through product sales and team-building.</p>
+                        <p>However, due to widespread misinformation and scams falsely claiming to be MLM, the industry's true potential and integrity are often misunderstood and misrepresented.</p>
+                    </div>
+                    <div class="content-card">
+                        <h4><i class="fas fa-shield-alt icon"></i> Our Commitment</h4>
+                        <p>In a world full of doubt and misinformation, NWA is the shield and strength of every genuine MLM professional. Through truth, unity, and relentless passion, we've brought hope, recognition, and dignity to an industry that employs crores of Indians — from fresh graduates to aspiring entrepreneurs.</p>
+                    </div>
+                </div>
+                
+                <div class="stats-card">
+                    <h4><i class="fas fa-chart-line icon"></i> Our Industry's Impact in India</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">5 crore+</div>
+                            <div class="stat-label">full-time careers created</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">12 crore+</div>
+                            <div class="stat-label">part-time earners empowered</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">Lakhs</div>
+                            <div class="stat-label">of youth leading independent lives</div>
+                        </div>
+                    </div>
+                    <div class="emphasis-box">
+                        <p>We're shaping futures.</p>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h4><i class="fas fa-question-circle icon"></i> Why NWA?</h4>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span>We fight for legal recognition of ethical MLM businesses</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span>We demand a dedicated ministry and MLM welfare board</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span>We push for strong laws that protect the good and punish the fake</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span>We expose scams, protect families, and recover lost hopes</span>
+                        </div>
+                    </div>
+                    <p class="note-text">Kerala and Andhra Pradesh have already taken steps — and we won't rest until all of India does!</p>
+                </div>
+                
+                <button class="read-more btn-primary">Read More <i class="fas fa-chevron-down"></i></button>
+                
+                <div class="more-content">
+                    <div class="content-card">
+                        <h4><i class="fas fa-gem icon"></i> Built with Integrity. Powered by Purpose.</h4>
+                        <p>We have never accepted donations.<br>We have never charged a fee.</p>
+                        <p>Our mission is pure. Our vision is clear.</p>
+                        <p>For 16 years, we've fought through petitions, protests, awareness drives, hunger strikes, and media campaigns — all to protect the people from fake schemes and uplift the real heroes of MLM.</p>
+                        <div class="emphasis-box">
+                            <p>Because for us, you're not a number — you're family.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <h4><i class="fas fa-history icon"></i> Our Vision: A Respected MLM Industry</h4>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p>MLM is seen as a noble profession</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p>MLM leaders are printed on wedding invitations with pride</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p>The word "networker" is spoken with honor, not hesitation</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card urgent-card">
+                        <h4><i class="fas fa-bell icon"></i> Let's eliminate scams. Let's Celebrate the Sincere.</h4>
+                        <p>Fake apps, fake websites, illegal firms — they've hurt innocent people and damaged our industry's name. It's time to clean it up.</p>
+                        <p>We urge the government and law enforcement to take strong, swift action.</p>
+                    </div>
+                    
+                    <div class="content-card global-card">
+                        <h4><i class="fas fa-globe-asia icon"></i> NWA is Global. But Our Heart Beats for India.</h4>
+                        <p>Yes, there are MLM associations across the world.<br>But only NWA has helped victims recover lost money, spoken up for justice, and stood by people every single day for 16 long years.</p>
+                    </div>
+                    
+                    <div class="content-card final-message">
+                        <h4><i class="fas fa-heart icon"></i> A Word to You</h4>
+                        <p>Please —<br>Don't be fooled by fake financial companies.<br>Don't trust shortcuts. Trust awareness.</p>
+                        <div class="emphasis-box">
+                            <p>Stay strong. Stay smart. Stay with NWA.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="signature-block">
+                        <p>Networkers Welfare Association (NWA)</p>
+                        <div class="signature-line"></div>
+                        <p>16 Years. Zero Donations. 100% Dedication.<br>
+                        India's Voice for Genuine MLM.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tamil Content (Hidden by default) -->
+            <div class="lang-content ta-content" style="display:none">
+                <div class="intro-card">
+                    <div class="intro-content">
+                        <h3>நெட்வொர்க்கர்ஸ் வெல்பேர் அசோசியேஷன் (NWA)</h3>
+                        <div class="divider"></div>
+                        <p class="tagline">16 ஆண்டுகள் அதிகாரமளித்தல் • நேர்மை • தாக்கம் • நன்கொடை இல்லாமல்</p>
+                        <p class="highlight">ஒரு இயக்கம். ஒரு பணி. ஒரு மில்லியன் கனவுகளின் ஒற்றுமை.</p>
+                    </div>
+                    <div class="intro-image">
+                        <img src="./images/cropped-NWA-logo.png" alt="NWA Team" class="responsive-img">
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <p>நெட்வொர்க்கர்ஸ் வெல்பேர் அசோசியேஷன் (NWA), பிப்ரவரி 26, 2009 இல் நிறுவப்பட்டது மற்றும் அரசாங்கச் சட்டம் எண். 48/2009 இன் கீழ் பதிவு செய்யப்பட்டது, இந்தியாவின் MLM தொழில்துறையின் முதுகெலும்பாக உயர்ந்து நிற்கிறது. நெட்வொர்க் மார்க்கெட்டிங் நிறுவனங்கள் மற்றும் MLM தொழில் வல்லுநர்களின் நல்வாழ்வைப் பாதுகாப்பதே எங்கள் முக்கிய நோக்கம், அதே நேரத்தில் தொழில்துறையின் நேர்மறையான நோக்கத்தை மேம்படுத்துவதாகும். நாடு முழுவதும் உள்ள 4 மில்லியனுக்கும் அதிகமான நெட்வொர்க்கர்களின் குரலைப் பிரதிநிதித்துவப்படுத்துகிறது.</p>
+                    <div class="emphasis-box">
+                        <p>நாங்கள் வெறும் ஒரு சங்கம் மட்டுமல்ல —<br>நாங்கள் ஒரு புரட்சி.</p>
+                    </div>
+                </div>
+                
+                <div class="two-column-grid">
+                    <div class="content-card">
+                        <h4><i class="fas fa-bullseye icon"></i> நாங்கள் எதற்காக நிற்கிறோம்</h4>
+                        <p>நேரடி விற்பனை, மல்டி-லெவல் மார்க்கெட்டிங் (எம்.எல்.எம்) என்றும் அழைக்கப்படுகிறது, இது ஒரு வணிக மாதிரியாகும், அங்கு தயாரிப்புகள் அல்லது சேவைகள் நேரடியாக நுகர்வோருக்கு விற்கப்படுகின்றன-பாரம்பரிய சில்லறை சேனல்களைத் தவிர்த்து-தனிப்பட்ட தொடர்புகள் மூலம், நேரில், ஆன்லைனில் அல்லது தொலைபேசியில். இது தனிநபர்களை தொழில்முனைவோராக மாற்றவும், நெட்வொர்க்குகளை உருவாக்கவும், தயாரிப்பு விற்பனை மற்றும் குழு உருவாக்கம் மூலம் வருமானம் ஈட்டவும் உதவுகிறது</p>
+                        <p>இருப்பினும், பரவலான தவறான தகவல் மற்றும் மோசடிகள் MLM என்று பொய்யாகக் கூறுவதால், தொழில்துறையின் உண்மையான திறன் மற்றும் ஒருமைப்பாடு பெரும்பாலும் தவறாகப் புரிந்து கொள்ளப்பட்டு தவறாக சித்தரிக்கப்படுகிறது</p>
+                    </div>
+                    <div class="content-card">
+                        <h4><i class="fas fa-shield-alt icon"></i> எங்கள் அர்ப்பணிப்பு</h4>
+                        <p>சந்தேகம் மற்றும் தவறான தகவல்கள் நிறைந்த உலகில், NWA என்பது ஒவ்வொரு உண்மையான MLM நிபுணரின் கேடயமாகவும் பலமாகவும் உள்ளது. உண்மை, ஒற்றுமை மற்றும் இடைவிடாத பேரார்வம் ஆகியவற்றின் மூலம், கோடிக்கணக்கான இந்தியர்களுக்கு - புதிய பட்டதாரிகள் முதல் ஆர்வமுள்ள தொழில்முனைவோர் வரை - ஒரு தொழிலுக்கு நம்பிக்கை, அங்கீகாரம் மற்றும் கண்ணியத்தை கொண்டு வந்துள்ளோம்.</p>
+                    </div>
+                </div>
+                
+                <div class="stats-card">
+                    <h4><i class="fas fa-chart-line icon"></i> இந்தியாவில் எங்கள் தொழில்துறையின் தாக்கம்</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">5 கோடி+</div>
+                            <div class="stat-label">முழுநேர தொழில் வாய்ப்புகள்</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">12 கோடி+</div>
+                            <div class="stat-label">பகுதிநேர வருவாய் ஈட்டுபவர்கள்</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">லட்சக்கணக்கான</div>
+                            <div class="stat-label">இளைஞர்கள் சுதந்திரமான வாழ்க்கை</div>
+                        </div>
+                    </div>
+                    <div class="emphasis-box">
+                        <p>நாங்கள் எதிர்காலங்களை வடிவமைக்கிறோம்.</p>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h4><i class="fas fa-question-circle icon"></i> ஏன் NWA?</h4>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span>நெறிமுறையான MLM வணிகங்களின் சட்டபூர்வமான அங்கீகாரத்திற்காக நாங்கள் போராடுகிறோம்</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span>ஒரு அர்ப்பணிக்கப்பட்ட அமைச்சகம் மற்றும் MLM நலன் வாரியத்தை நாங்கள் கோருகிறோம்</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span>நல்லவர்களைப் பாதுகாக்கும் மற்றும் போலிகளை தண்டிக்கும் வலுவான சட்டங்களை நாங்கள் வலியுறுத்துகிறோம்</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span>மோசடிகளை அம்பலப்படுத்துகிறோம், குடும்பங்களைப் பாதுகாக்கிறோம், இழந்த நம்பிக்கைகளை மீட்டெடுக்கிறோம்</span>
+                        </div>
+                    </div>
+                    <p class="note-text">கேரளா, ஆந்திரப் பிரதேசம் ஏற்கனவே நடவடிக்கைகளை எடுத்துள்ளன — இந்தியா முழுவதும் இது நடக்கும் வரை நாங்கள் ஓய்வெடுக்க மாட்டோம்!</p>
+                </div>
+                
+                <button class="read-more btn-primary">மேலும் படிக்க <i class="fas fa-chevron-down"></i></button>
+                
+                <div class="more-content">
+                    <div class="content-card">
+                        <h4><i class="fas fa-gem icon"></i> நேர்மையுடன் கட்டப்பட்டது. நோக்கத்தால் இயக்கப்படுகிறது.</h4>
+                        <p>நாங்கள் ஒருபோதும் நன்கொடைகளை ஏற்கவில்லை.<br>நாங்கள் ஒருபோதும் கட்டணம் வசூலிக்கவில்லை.</p>
+                        <p>எங்கள் பணி தூய்மையானது. எங்கள் பார்வை தெளிவானது.</p>
+                        <p>16 ஆண்டுகளாக, நாங்கள் மனுக்கள், போராட்டங்கள், விழிப்புணர்வு இயக்கங்கள், உண்ணாவிரதப் போராட்டம் மற்றும் ஊடகப் பிரச்சாரங்கள் மூலம் போராடி வருகிறோம் - இவை அனைத்தும் போலித் திட்டங்களிலிருந்து மக்களைப் பாதுகாக்கவும், MLM இன் உண்மையான ஹீரோக்களை உயர்த்தவும்</p>
+                        <div class="emphasis-box">
+                            <p>ஏனென்றால் எங்களைப் பொறுத்தவரை நீங்கள் ஒரு எண் அல்ல - நீங்கள் ஒரு குடும்பம்.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <h4><i class="fas fa-history icon"></i> எங்கள் குறிக்கோள்: மதிக்கப்படும் MLM தொழில்துறை</h4>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p>MLM ஒரு உன்னதமான தொழிலாக கருதப்படும்</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p>MLM தலைவர்கள் திருமண அழைப்பிதழ்களில் தங்கள் பெயரினை எம் MLM என்று பெருமையுடன் அச்சிட வேண்டும்</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <p>"நெட்வொர்க்கர்" என்ற வார்த்தை தயக்கமின்றி மரியாதையுடன் பேசப்படும்</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card urgent-card">
+                        <h4><i class="fas fa-bell icon"></i> மோசடிகளை ஒழிப்போம். நேர்மையானவர்களை கொண்டாடுவோம்.</h4>
+                        <p>போலி Apps, போலி இணையதளங்கள், சட்டவிரோத நிறுவனங்கள் - இவை அப்பாவி மக்களை காயப்படுத்தி, எங்கள் தொழில்துறையின் பெயரை சேதப்படுத்துகின்றன. அதை சுத்தம் செய்ய வேண்டிய நேரம் இது.</p>
+                        <p>அரசு மற்றும் சட்ட அமலாக்க அதிகாரிகள் வலுவான, விரைவான நடவடிக்கை எடுக்க வேண்டும் என்று வலியுறுத்துகிறோம்.</p>
+                    </div>
+                    
+                    <div class="content-card global-card">
+                        <h4><i class="fas fa-globe-asia icon"></i> NWA உலகளாவியது. ஆனால் எங்கள் இதயம் இந்தியாவுக்காக துடிக்கிறது.</h4>
+                        <p>ஆம், உலகம் முழுவதும் MLM சங்கங்கள் உள்ளன.<br>ஆனால் NWA மட்டுமே பாதிக்கப்பட்டவர்கள் இழந்த பணத்தை மீட்டெடுக்க உதவியது, நீதிக்காக பேசியது, மற்றும் 16 ஆண்டுகளாக ஒவ்வொரு நாளும் மக்களுடன் நின்றது.</p>
+                    </div>
+                    
+                    <div class="content-card final-message">
+                        <h4><i class="fas fa-heart icon"></i> உங்களுக்கு ஒரு வார்த்தை</h4>
+                        <p>தயவு செய்து —<br>போலி நிதி நிறுவனங்களால் ஏமாற வேண்டாம்.<br>குறுக்குவழிகளை நம்ப வேண்டாம். விழிப்புணர்வை நம்புங்கள்.</p>
+                        <div class="emphasis-box">
+                            <p>வலுவாக இருங்கள். சாமர்த்தியமாக இருங்கள். NWA உடன் இருங்கள்.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="signature-block">
+                        <p>நெட்வொர்க்கர்ஸ் வெல்பேர் அசோசியேஷன் (NWA)</p>
+                        <div class="signature-line"></div>
+                        <p>16 ஆண்டுகள். பூஜ்ய நன்கொடைகள். 100% அர்ப்பணிப்பு.<br>
+                        இந்தியாவின் உண்மையான MLM க்கான குரல்.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</script>
+
+<style>
+/* Base Styles */
+
+
+/* About Section */
+.about-section {
+    padding: 80px 0;
+    background-color: var(--light-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 0;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+.language-toggle {
+    display: flex;
+    gap: 10px;
+    background: var(--white);
+    padding: 5px;
+    border-radius: 30px;
+    box-shadow: var(--box-shadow);
+}
+
+.lang-btn {
+    padding: 8px 20px;
+    background: transparent;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* Grid Layout */
+.about-grid {
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Intro Card */
+.intro-card {
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+
+
+.intro-content {
+    flex: 1;
+    min-width: 300px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.intro-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.responsive-img {
+    width: 70%;
+    height: 90%;
+    object-fit: fill;
+}
+
+.tagline {
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.highlight {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 20px 0;
+    line-height: 1.4;
+}
+
+.divider {
+    width: 50px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    margin: 15px 0;
+}
+
+/* Content Cards */
+.content-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+}
+
+.content-card h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+/* Two Column Grid */
+.two-column-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Stats Card */
+.stats-card {
+    background: linear-gradient(135deg, var(--primary-color), #1a252f);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    color: var(--white);
+    box-shadow: var(--box-shadow);
+}
+
+.stats-card h4 {
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 9px;
+    width: 20p;
+    background: rgba(221, 221, 214, 0.904);
+    border-radius: var(--border-radius);
+}
+
+.stat-number {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    color: wheat    ;
+}
+
+/* Feature List */
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.feature-icon {
+    color: var(--secondary-color);
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.note-text {
+    font-style: italic;
+    margin-top: 20px;
+    color: var(--light-text);
+}
+
+/* Emphasis Box */
+.emphasis-box {
+    background: rgba(231, 76, 60, 0.1);
+    border-left: 4px solid var(--secondary-color);
+    padding: 15px 20px;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+/* Buttons */
+.btn-primary {
+    display: block;
+    margin: 40px auto;
+    padding: 12px 30px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    box-shadow: var(--box-shadow);
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+/* More Content */
+.more-content {
+    display: none;
+    padding-top: 20px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    margin: 30px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--secondary-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -39px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--secondary-color);
+}
+
+.timeline-content {
+    padding: 15px 20px;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* Special Cards */
+.urgent-card {
+    border-top: 4px solid var(--secondary-color);
+}
+
+.global-card {
+    border-top: 4px solid var(--accent-color);
+}
+
+.final-message {
+    border-top: 4px solid #2ecc71;
+}
+
+/* Signature Block */
+.signature-block {
+    text-align: center;
+    margin: 50px 0 30px;
+    font-style: italic;
+}
+
+.signature-line {
+    width: 100px;
+    height: 2px;
+    background: var(--secondary-color);
+    margin: 15px auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .intro-content {
+        padding: 30px 20px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-toggle {
+        width: 100%;
+    }
+    
+    .lang-btn {
+        flex: 1;
+        text-align: center;
+    }
+}
+</style>
+
+
+
+<script>
+    // Language Toggle Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all language contents
+                langContents.forEach(content => content.style.display = 'none');
+                
+                // Show selected language content
+                const lang = this.getAttribute('data-lang');
+                document.querySelector(`.${lang}-content`).style.display = 'block';
+            });
+        });
+        
+        // Read More functionality
+        const readMoreButtons = document.querySelectorAll('.read-more');
+        readMoreButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const moreContent = this.nextElementSibling;
+                if (moreContent.style.display === 'none' || !moreContent.style.display) {
+                    moreContent.style.display = 'block';
+                    this.innerHTML = this.innerHTML.includes('Read More') ? 
+                        'Read Less <i class="fas fa-chevron-up"></i>' : 
+                        'மேலும் படிக்க <i class="fas fa-chevron-up"></i>';
+                    // Smooth scroll to the expanded content
+                    moreContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    moreContent.style.display = 'none';
+                    this.innerHTML = this.innerHTML.includes('Read Less') ? 
+                        'Read More <i class="fas fa-chevron-down"></i>' : 
+                        'மேலும் படிக்க <i class="fas fa-chevron-down"></i>';
+                }
+            });
+        });
+        
+        // Fade-in animation for content
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.content-card, .stats-card, .intro-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    });
+</script>
+
+
+
+
+
+
+  <style>
+    
+    
+    /* Mission Statement Container */
+    .mission-statement {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+    }
+
+    /* Background Pattern */
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233a6ea5' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mission-card {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 50px 40px;
+      margin: 0 auto;
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative Elements */
+    .card-accent {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background-color: var(--accent-color);
+      opacity: 0.05;
+      border-radius: 50%;
+    }
+
+    .accent-top-right {
+      top: -50px;
+      right: -50px;
+    }
+
+    .accent-bottom-left {
+      bottom: -60px;
+      left: -60px;
+      width: 200px;
+      height: 200px;
+    }
+
+    /* Header Section */
+    .mission-header {
+      margin-bottom: 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section-icon {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-secondary);
+      color: var(--primary-color);
+      font-size: 2rem;
+      border-radius: 50%;
+      margin-bottom: 25px;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .section-icon:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(58, 110, 165, 0.2);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .years-counter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--accent-color);
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-top: -5px;
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+    }
+
+    .years-number {
+      font-size: 1.4em;
+      margin: 0 3px;
+    }
+
+    .divider {
+      position: relative;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+      margin: 0 auto 30px;
+    }
+
+    /* Content Section */
+    .mission-content {
+      position: relative;
+    }
+
+    .highlight-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      position: relative;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .highlight-text p:first-of-type {
+      margin-bottom: 20px;
+    }
+
+    .highlight-text strong {
+      color: var(--primary-color);
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+    }
+
+    .highlight-text strong::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(255, 107, 107, 0.2);
+      bottom: 0;
+      left: 0;
+      transform: translateY(2px);
+    }
+
+    .key-points {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .point-card {
+      flex: 1;
+      min-width: 220px;
+      max-width: 250px;
+      background-color: var(--bg-secondary);
+      padding: 25px 20px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .point-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .point-icon {
+      color: var(--accent-color);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .point-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .point-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      margin-top: 40px;
+    }
+
+    .cta-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition-speed);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(58, 110, 165, 0.3);
+    }
+
+    .cta-button:hover {
+      background-color: #2c5987;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(58, 110, 165, 0.4);
+    }
+
+
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: relative;
+      margin-top: 40px;
+    }
+
+    .scroll-text {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .scroll-icon {
+      display: inline-block;
+      color: var(--accent-color);
+      font-size: 1.8rem;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Focus and Accessibility */
+    a:focus, button:focus {
+      outline: 3px solid rgba(58, 110, 165, 0.4);
+      outline-offset: 3px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .mission-card {
+        padding: 40px 30px;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mission-statement {
+        padding: 60px 0;
+      }
+      
+      .section-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .highlight-text {
+        font-size: 1.1rem;
+      }
+      
+      .key-points {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .point-card {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .mission-card {
+        padding: 30px 20px;
+      }
+      
+      .section-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .highlight-text {
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+      
+      .years-counter {
+        font-size: 1rem;
+        padding: 4px 12px;
+      }
+    }
+  </style>
+
+  <section class="mission-statement" id="mission">
+    <div class="bg-pattern" aria-hidden="true"></div>
+    <div class="container">
+      <div class="mission-card">
+        <!-- Decorative accents -->
+        <div class="card-accent accent-top-right" aria-hidden="true"></div>
+        <div class="card-accent accent-bottom-left" aria-hidden="true"></div>
+        
+        <!-- Header Section -->
+        <header class="mission-header">
+          <div class="section-icon" aria-hidden="true">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h2 class="section-title">Our Mission</h2>
+          <div class="years-counter">
+            <span class="years-number" id="yearsCounter">16</span> Years of Service
+          </div>
+          <div class="divider" aria-hidden="true"></div>
+        </header>
+        
+        <!-- Main Content -->
+        <div class="mission-content">
+          <div class="highlight-text">
+            <p>
+              Since 2009, the <strong>Networkers Welfare Association</strong> has been at the forefront of the fight against fake financial institutions misusing the name of MLM. With powerful awareness drives, real-time support, and a strong community presence, we've safeguarded countless individuals and families.
+            </p>
+            <p>
+              Driven by a pure service motive, we do it all without collecting a single rupee. Be part of a movement that's making a real difference!
+            </p>
+          </div>
+          
+          <!-- Key Points Section -->
+          <div class="key-points">
+            <div class="point-card">
+              <div class="point-icon" aria-hidden="true">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+              <h3 class="point-title">Awareness Campaigns</h3>
+              <p class="point-text">Educating communities about fraudulent schemes and safe financial practices.</p>
+            </div>
+            
+            <div class="point-card">
+              <div class="point-icon" aria-hidden="true">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3 class="point-title">Community Support</h3>
+              <p class="point-text">Building networks of informed individuals to strengthen local vigilance.</p>
+            </div>
+            
+            <div class="point-card">
+              <div class="point-icon" aria-hidden="true">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 class="point-title">Protection Services</h3>
+              <p class="point-text">Providing real-time assistance to those affected by fraudulent schemes.</p>
+            </div>
+          </div>
+          
+          <!-- CTA Section -->
+          <div class="cta-section">
+            <p class="cta-text">Discover the impactful work we've been proudly leading for over 16 years!</p>
+            <a href="#news" class="cta-button">
+              Explore Our Initiatives
+            </a>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <p class="scroll-text">Learn More</p>
+            <div class="scroll-icon">
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Counter animation for years of service
+    document.addEventListener('DOMContentLoaded', function() {
+      // Function to check if element is in viewport
+      function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+      
+      // Function to animate counter
+      function animateCounter(element, target, duration) {
+        let start = 0;
+        const increment = target > start ? 1 : -1;
+        const stepTime = Math.abs(Math.floor(duration / target));
+        
+        const timer = setInterval(function() {
+          start += increment;
+          element.textContent = start;
+          if (start === target) {
+            clearInterval(timer);
+          }
+        }, stepTime);
+      }
+      
+      // Animate on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Animate counter when section is visible
+            const yearCounter = document.getElementById('yearsCounter');
+            animateCounter(yearCounter, 16, 1500);
+            // Fade in key points
+            document.querySelectorAll('.point-card').forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add('animate__animated', 'animate__fadeInUp');
+              }, 300 * index);
+            });
+            // Once animation is done, disconnect observer
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      // Observe the mission section
+      observer.observe(document.querySelector('.mission-statement'));
+      
+      // Smooth scroll functionality
+      document.querySelector('.cta-button').addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          e.preventDefault();
+          window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+
+    <style>
+       
+        
+        /* News & Events Section Styling */
+        .news-section {
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .news-section > .container > p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        /* Media Scroller */
+        .media-scroller-container {
+            position: relative;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .media-scroller {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+            padding: 10px 0;
+        }
+        
+        /* Media Cards */
+        .media-card {
+            min-width: 300px;
+            width: 300px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .media-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .media-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .media-card img:hover {
+            transform: scale(1.03);
+        }
+        
+        .media-content {
+            padding: 15px;
+        }
+        
+        .media-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .media-content p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Scroll Controls */
+        .scroll-controls {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .scroll-left, .scroll-right {
+            background: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .scroll-left:hover, .scroll-right:hover {
+            background: #003d82;
+        }
+        
+        .scroll-left:focus, .scroll-right:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.3);
+        }
+        
+        /* More News Button */
+        .more-news-container {
+            min-width: 240px;
+            display: flex;
+            align-items: normal;
+            justify-content: start;
+        }
+        
+        .more-news-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .more-news-btn:hover {
+            background: #003d82;
+        }
+        
+        .more-news-btn i {
+            margin-left: 8px;
+        }
+        
+        /* Fullscreen Overlay */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .fullscreen-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .close-fullscreen {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        /* Animation for card entrance */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .media-card {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .media-card {
+                min-width: 250px;
+                width: 250px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .news-section > .container > p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .media-card {
+                min-width: 220px;
+                width: 220px;
+            }
+            
+            .media-content h3 {
+                font-size: 1rem;
+            }
+            
+            .media-content p {
+                font-size: 0.8rem;
+            }
+            
+            .scroll-left, .scroll-right {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+
+    <!-- News & Media Section -->
+    <section id="news" class="news-section">
+        <div class="container">
+           <center> <h2 class="section-title">News & Media</h2></center>
+            <p>"NWA has held press meets across India, featured on top TV channels and in leading newspapers like Tamil, English, Hindi, Malayalam, Kannada, and Gujarati. Here are a few highlights for your view."</p>
+            
+            <div class="media-scroller-container">
+                <div class="media-scroller" id="news-scroller">
+                    <div class="media-card">
+                        <img src="./images/news/news s 1.jpg" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                            <h3>Consultative Meeting of the NWA in Yercaud</h3>
+                            <p>"The NWA Consultative Meeting held in Yercaud brought together key members to discuss future strategies, strengthen collaboration, and outline action plans for upcoming initiatives in the region."</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/news/news s 2.png" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                            <h3>NWA President Interview With All India Radio</h3>
+                            <p>"Per Capita Income Will Improve, If Govt. Forms Guidelines For MLM Industry"</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/news/news s 3.png" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                            <h3>MASS HUNGER STRIKE</h3>
+                            <p>"To curb Illegal/bogus finance companies that are functioning like Multi-Level Marketing formula."</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/news/news s 4.png" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                            <h3>Demand of the Association</h3>
+                            <p>"NWA President Manoharan insisted that strict action should be taken against the financial institutions."</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/news/news s 5.jpg" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                            <h3>Be Cautious of Networking Fraud</h3>
+                            <p>The Networkers Welfare Association was established in Surat to raise awareness about fraudulent practices by MLM networking companies.</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/news/news s 6.png" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                            <h3>NWA Organises Mass Hunger Strike at Thrissur</h3>
+                            <p>To demand recognition of MLM as a legitimate industry and curb fake finance companies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="more-news-container">
+                        <a href="./news-gallery.html" class="more-news-btn">
+                            View More  <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-controls">
+                <button class="scroll-left" id="news-scroll-left"><i class="fas fa-chevron-left"></i></button>
+                <button class="scroll-right" id="news-scroll-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="Events" class="news-section">
+        <div class="container">
+           <center> <h2 class="section-title">Events</h2> </center>
+            <p>"Spreading awareness, empowering communities! NWA has successfully conducted impactful awareness meetings across India — here are a few for your views!"</p>
+            
+            <div class="media-scroller-container">
+                <div class="media-scroller" id="events-scroller">
+                    <div class="media-card">
+                        <img src="./images/meetings/meeting 1.png" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/meetings/meetings 2.jpg" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/meetings/meetings 3.png" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/meetings/meetings 4.png" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/meetings/meetings 5.png" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/meetings/meetings 6.jpg" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/meetings/meetings 7.jpg" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <img src="./images/meetings/meetings 8.jpg" alt="Press Release" onclick="openFullscreen(this.src)">
+                        <div class="media-content">
+                        </div>
+                    </div>
+                    <div class="more-news-container">
+                        <a href="./meetings-gallery.html" class="more-news-btn">
+                            View More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-controls">
+                <button class="scroll-left" id="events-scroll-left"><i class="fas fa-chevron-left"></i></button>
+                <button class="scroll-right" id="events-scroll-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fullscreen Overlay -->
+    <div class="fullscreen-overlay" id="fullscreen-overlay">
+        <span class="close-fullscreen" onclick="closeFullscreen()">&times;</span>
+        <img id="fullscreen-image" src="" alt="Fullscreen Image">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize News & Media Carousel
+            initializeCarousel('news-scroller', 'news-scroll-left', 'news-scroll-right');
+            
+            // Initialize Events Carousel
+            initializeCarousel('events-scroller', 'events-scroll-left', 'events-scroll-right');
+            
+            // Function to handle fullscreen image view
+            window.openFullscreen = function(src) {
+                const overlay = document.getElementById('fullscreen-overlay');
+                const image = document.getElementById('fullscreen-image');
+                image.src = src;
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            };
+            
+            window.closeFullscreen = function() {
+                const overlay = document.getElementById('fullscreen-overlay');
+                overlay.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            };
+            
+            // Close fullscreen on overlay click
+            document.getElementById('fullscreen-overlay').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeFullscreen();
+                }
+            });
+            
+            // Close on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeFullscreen();
+                }
+            });
+        });
+        
+        // Function to initialize carousel functionality
+        function initializeCarousel(scrollerId, leftBtnId, rightBtnId) {
+            const scroller = document.getElementById(scrollerId);
+            const leftBtn = document.getElementById(leftBtnId);
+            const rightBtn = document.getElementById(rightBtnId);
+            const cards = scroller.querySelectorAll('.media-card');
+            
+            let cardWidth = cards[0].offsetWidth + 20; // Width + gap
+            let currentIndex = 0;
+            let maxIndex = cards.length - getVisibleCardCount(cardWidth);
+            let autoScrollInterval;
+            
+            // Calculate how many cards are visible based on container width
+            function getVisibleCardCount(cardWidth) {
+                const containerWidth = scroller.parentElement.offsetWidth;
+                return Math.floor(containerWidth / cardWidth);
+            }
+            
+            // Update maxIndex when window resizes
+            window.addEventListener('resize', () => {
+                cardWidth = cards[0].offsetWidth + 20; // Recalculate card width
+                maxIndex = Math.max(0, cards.length - getVisibleCardCount(cardWidth));
+                
+                // If current index is now out of bounds, adjust it
+                if (currentIndex > maxIndex) {
+                    currentIndex = maxIndex;
+                    updateScrollPosition();
+                }
+            });
+            
+            // Update the scroll position
+            function updateScrollPosition() {
+                scroller.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+            
+            // Next slide function
+            function nextSlide() {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                } else {
+                    // Loop back to start
+                    currentIndex = 0; 
+                }
+                updateScrollPosition();
+            }
+            
+            // Previous slide function
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    // Loop to end
+                    currentIndex = maxIndex;
+                }
+                updateScrollPosition();
+            }
+            
+            // Set up button listeners
+            leftBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoScroll();
+            });
+            
+            rightBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoScroll();
+            });
+            
+            // Start auto-scrolling
+            function startAutoScroll() {
+                // Clear any existing interval first
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                }
+                
+                // Set new interval - change slide every 4 seconds
+                autoScrollInterval = setInterval(() => {
+                    nextSlide();
+                }, 4000);
+            }
+            
+            // Reset auto-scroll timer (call after manual navigation)
+            function resetAutoScroll() {
+                clearInterval(autoScrollInterval);
+                startAutoScroll();
+            }
+            
+            // Pause auto-scroll on hover
+            scroller.addEventListener('mouseenter', () => {
+                clearInterval(autoScrollInterval);
+            });
+            
+            // Resume auto-scroll when mouse leaves
+            scroller.addEventListener('mouseleave', () => {
+                startAutoScroll();
+            });
+            
+            // Touch events for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            scroller.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                clearInterval(autoScrollInterval);
+            }, { passive: true });
+            
+            scroller.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startAutoScroll();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const swipeDistance = touchStartX - touchEndX;
+                if (swipeDistance > 50) {
+                    nextSlide(); // Swipe left = next
+                } else if (swipeDistance < -50) {
+                    prevSlide(); // Swipe right = previous
+                }
+            }
+            
+            // Initialize with auto-scrolling
+            startAutoScroll();
+        }
+    </script>
+<script>// Get the scroll controls and media scroller elements
+
+
+    const scrollControls = document.querySelector('.scroll-controls');
+    const mediaScroller = document.querySelector('.media-scroller');
+    
+    // Set the scroll amount (in pixels)
+    const scrollAmount = 300;
+    
+    // Add event listeners to the scroll buttons
+    scrollControls.addEventListener('click', (e) => {
+    if (e.target.classList.contains('scroll-left')) {
+        // Scroll left
+        mediaScroller.scrollLeft -= scrollAmount;
+    } else if (e.target.classList.contains('scroll-right')) {
+        // Scroll right
+        mediaScroller.scrollLeft += scrollAmount;
+    }
+    });
+    </script>
+    
+
+
+
+<!-- Protest Section -->
+<section  id="people" class="approach-section">
+    <div class="container">
+     <center>   <h2 class="section-title"><i class="fas fa-hand-fist"></i> FOR THE PEOPLE</h2> </center>
+        <div class="approach-cards">
+            <!-- Kerala and TN Protest Card -->
+            <div class="approach-card">
+                <div class="card-thumbnail">
+                    <img src="images/kerala/Kerala p (1).jpg" alt="Kerala Protest" class="protest-thumb" onclick="openFullscreen(this.src)">
+                </div>
+                <h3>MASS HUNGER STRIKES Against Bogus/Illegal Financial Companies.</h3>
+                <p>"The strikes aimed to address the grievances of individuals affected by fraudulent Multi-Level Marketing (MLM) and other illegal financial companies. 
+                    The need for a separate ministry for the MLM industry,
+                    Government regulation of MLM companies, Compensation for victims,
+                    Action against companies operating illegally".</p>
+                <a href="gallery-kerala.html" class="view-more">VIEW MORE <i class="fas fa-arrow-right"></i></a>
+            </div>
+<!-- Awareness Pamphlet Card -->
+<div class="approach-card">
+    <div class="card-thumbnail">
+        <img src="images/flyer/flyer. 1.png" alt="Awareness Pamphlet" class="protest-thumb" onclick="openFullscreen(this.src)">
+    </div>
+    <h3>Awareness Pamphlets</h3>
+    <p>"The Networkers Welfare Association (NWA) is actively raising awareness about fraudulent MLM investment schemes by distributing informative pamphlets to the public. Don't let yourself fall victim to scams—get your FREE pamphlet today and learn how to spot these deceptive schemes. A few pamphlets for your views"</p>
+    <a href="gallery-pamphlet.html" class="view-more">VIEW MORE <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<!-- Mission Section -->
+<div class="approach-card">
+    <div class="card-thumbnail">
+        <img src="images/letters/letter 1.png" alt="Petitions" class="protest-thumb" onclick="openFullscreen(this.src)">
+    </div>
+    <h3>On a Mission for Justice</h3>
+    <p>"NWA is fearlessly leading the charge against fraudulent investment companies! With official petitions and complaints submitted to the RBI, top government officials, and law enforcement, we’re taking real action to expose scams and protect the public. Here are a few cases for your view—clear evidence that NWA is not just a voice, but a force for financial justice"</p>
+    <a href="./petitions-gallery.html" class="view-more">VIEW MORE <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Fullscreen Overlay -->
+<div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreen()">
+<img id="fullscreenImage" src="" alt="Fullscreen Image">
+</div>
+
+<style>
+.fullscreen-overlay {
+display: none; /* Hidden by default */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+justify-content: center;
+align-items: center;
+z-index: 1000;
+}
+
+.fullscreen-overlay img {
+max-width: 90%;
+max-height: 90%;
+}
+</style>
+
+<script>
+function openFullscreen(src) {
+const overlay = document.getElementById('fullscreenOverlay');
+const fullscreenImage = document.getElementById('fullscreenImage');
+fullscreenImage.src = src;
+overlay.style.display = 'flex'; // Show the overlay
+}
+
+function closeFullscreen() {
+const overlay = document.getElementById('fullscreenOverlay');
+overlay.style.display = 'none'; // Hide the overlay
+}
+</script>
+
+   <!-- Events Section -->
+<section id="events" class="events-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Upcoming Events</h2> 
+           
+            <div class="event-view-toggle">
+                
+            </div>
+        </div>
+
+        <!-- Upcoming Events Panel -->
+        <div class="events-panel upcoming-events active">
+            <div class="panel-header">
+                <h3>“Get Ready to Join In!”</h3>
+                <div class="event-search">
+                    <input type="text" placeholder="Search events..." aria-label="Search events">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <div class="events-grid">
+
+                <!-- No Events Placeholder -->
+                <div class="no-events">
+                    <i class="far fa-calendar-plus"></i>
+                    <p>More events coming soon!</p>
+                    
+                </div>
+            </div>
+        </div>
+
+                        
+
+            
+
+
+<style>
+/* Events Section Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --accent-color: #3498db;
+    --light-bg: #f8f9fa;
+    --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+.events-section {
+    padding: 80px 0;
+    background-color: var(--light-bg);
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.event-view-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.view-toggle-btn {
+    padding: 10px 20px;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.view-toggle-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Events Panels */
+.events-panel {
+    display: none;
+    margin-bottom: 50px;
+}
+
+.events-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.panel-header h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.event-search {
+    position: relative;
+    min-width: 250px;
+}
+
+.event-search input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 0.95rem;
+}
+
+.event-search i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.event-filters {
+    display: flex;
+    gap: 15px;
+}
+
+.event-filters select {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.95rem;
+}
+
+/* Events Grid */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Event Cards */
+.event-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.event-card.featured {
+    border: 2px solid var(--secondary-color);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--secondary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.event-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.event-card:hover .event-image img {
+    transform: scale(1.05);
+}
+
+.event-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.event-countdown {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.countdown-days {
+    font-weight: bold;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+.event-content {
+    padding: 20px;
+}
+
+.event-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.event-title {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--primary-color);
+    line-height: 1.4;
+}
+
+.event-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.event-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.event-stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.event-excerpt {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.event-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-register, .btn-view {
+    padding: 8px 20px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-register:hover, .btn-view:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn-calendar {
+    width: 32px;
+    height: 32px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-calendar:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-gallery {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-gallery:hover {
+    background: var(--accent-color);
+}
+
+.social-share {
+    display: flex;
+    gap: 8px;
+}
+
+.social-share button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: #f0f0f0;
+    color: #555;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-share button:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* No Events Placeholder */
+.no-events {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+}
+
+.no-events i {
+    font-size: 3rem;
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+.no-events p {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.btn-newsletter {
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-newsletter:hover {
+    background: var(--secondary-color);
+}
+
+/* Events Timeline */
+.events-timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.events-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #ddd;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -39px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--secondary-color);
+    z-index: 2;
+}
+
+.timeline-date {
+    position: absolute;
+    left: -180px;
+    top: 0;
+    width: 150px;
+    text-align: right;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.timeline-content {
+    padding-left: 20px;
+}
+
+/* View More Button */
+.view-more-events {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-view-all {
+    padding: 12px 25px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-view-all:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+.btn-view-all i {
+    transition: transform 0.3s ease;
+}
+
+.btn-view-all:hover i {
+    transform: translateY(3px);
+}
+
+/* Calendar View */
+.calendar-view .panel-header {
+    justify-content: center;
+}
+
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.current-month {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    min-width: 150px;
+    text-align: center;
+}
+
+.btn-prev-month, .btn-next-month {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-prev-month:hover, .btn-next-month:hover {
+    color: var(--secondary-color);
+}
+
+.calendar-container {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    min-height: 400px;
+}
+
+.calendar-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    color: #777;
+}
+
+.calendar-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+/* Newsletter */
+.events-newsletter {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    margin-top: 50px;
+}
+
+.newsletter-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.newsletter-image {
+    flex: 1;
+}
+
+.newsletter-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.newsletter-content h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.newsletter-content p {
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    padding: 12px 25px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background: #c0392b;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .timeline-date {
+        position: static;
+        width: auto;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    
+    .events-timeline {
+        padding-left: 0;
+    }
+    
+    .events-timeline::before {
+        display: none;
+    }
+    
+    .timeline-item::before {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .events-newsletter {
+        flex-direction: column;
+    }
+    
+    .newsletter-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .events-section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .event-view-toggle {
+        flex-wrap: wrap;
+    }
+    
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .event-search, .event-filters {
+        width: 100%;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsletter-content {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .event-filters {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form button {
+        width: 100%;
+    }
+}
+</style>
+<!-- Team Section -->
+<!-- <section class="team-section" aria-labelledby="team-heading">
+    <div class="container">
+        <div class="section-header">
+            <h2 id="team-heading" class="section-title">Our Leadership Team</h2>
+            <p class="section-subtitle">Meet the dedicated professionals who guide our mission to protect and empower network marketing professionals across India</p>
+        </div>
+
+        <!-- Team Filters -->
+        <!-- <div class="team-filters">
+            <div class="filter-group">
+                <label for="department-filter">Filter by Department:</label>
+                <select id="department-filter" class="filter-select">
+                    <option value="all">All Departments</option>
+                    <option value="administration">Administration</option>
+                    <option value="advocacy">Advocacy</option>
+                    <option value="education">Education</option>
+                    <option value="operations">Operations</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sort-by">Sort by:</label>
+                <select id="sort-by" class="filter-select">
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="seniority">Seniority</option>
+                </select>
+            </div>
+        </div> -->
+
+        <!-- Team Grid -->
+        <!-- <div class="team-grid" id="team-container"> -->
+            <!-- Team Member 1 -->
+            <!-- <div class="team-card" data-department="administration" data-seniority="5">
+                <div class="card-inner">
+                    <div class="member-photo">
+                        <img src="images/team/team1.jpg" alt="Photo of Rajesh Kumar" loading="lazy">
+                        <div class="photo-overlay">
+                            <div class="social-links">
+                                <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
+                                <a href="#" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Rajesh Kumar</h3>
+                        <p class="member-title">Chief Administrator</p>
+                        <div class="member-meta">
+                            <span class="member-years"><i class="fas fa-calendar-alt"></i> 5 years</span>
+                            <span class="member-dept">Administration</span>
+                        </div>
+                        <p class="member-bio">Leading NWA's strategic direction and organizational development since 2018.</p>
+                        <div class="member-actions">
+                            <button class="btn-profile">View Profile</button>
+                            <button class="btn-contact">Contact</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Team Member 2 -->
+            <!-- <div class="team-card featured" data-department="advocacy" data-seniority="7">
+                <div class="featured-badge">Team Lead</div>
+                <div class="card-inner">
+                    <div class="member-photo">
+                        <img src="images/team/team2.jpg" alt="Photo of Priya Sharma" loading="lazy">
+                        <div class="photo-overlay">
+                            <div class="social-links">
+                                <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email contact"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Priya Sharma</h3>
+                        <p class="member-title">Director of Advocacy</p>
+                        <div class="member-meta">
+                            <span class="member-years"><i class="fas fa-calendar-alt"></i> 7 years</span>
+                            <span class="member-dept">Advocacy</span>
+                        </div>
+                        <p class="member-bio">Championing policy changes and legal protections for network marketers.</p>
+                        <div class="member-actions">
+                            <button class="btn-profile">View Profile</button>
+                            <button class="btn-contact">Contact</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Additional team members would follow same pattern -->
+            
+        <!-- </div> -->
+
+        <!-- View More Button -->
+        <!-- <div class="team-cta">
+            <button class="btn-view-all" id="load-more-members">Load More Team Members</button>
+            <div class="team-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="total-members">24</span>
+                    <span class="stat-label">Team Members</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="total-experience">127</span>
+                    <span class="stat-label">Combined Years</span>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Org Chart CTA -->
+        <!-- <div class="org-chart-cta">
+            <h3>View Our Organizational Structure</h3>
+            <p>See how our leadership team works together to serve the network marketing community</p>
+            <button class="btn-org-chart">View Organizational Chart <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div> -->
+
+    <!-- Team Member Modal -->
+    <!-- <div class="team-modal" id="team-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-photo">
+                <img id="modal-photo" src="" alt="">
+            </div>
+            <div class="modal-info">
+                <h3 id="modal-name"></h3>
+                <p class="modal-title" id="modal-title"></p>
+                <div class="modal-meta">
+                    <span id="modal-years"></span>
+                    <span id="modal-dept"></span>
+                </div>
+                <div class="modal-social" id="modal-social"></div>
+                <div class="modal-bio" id="modal-bio"></div>
+                <a href="#" class="btn-contact" id="modal-contact">Contact This Member</a>
+            </div>
+        </div>
+    </div>
+</section> --> 
+
+<style>
+/* Team Section Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --accent-color: #3498db;
+    --light-bg: #f8f9fa;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+.team-section {
+    padding: 80px 0;
+    background-color: var(--light-bg);
+    position: relative;
+    background-image: url('images/team-pattern.png');
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 300px;
+    background-blend-mode: overlay;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Team Filters */
+.team-filters {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-group label {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.filter-select {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.95rem;
+    min-width: 180px;
+}
+
+/* Team Grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.team-card {
+    position: relative;
+    perspective: 1000px;
+}
+
+.team-card.featured {
+    grid-column: span 2;
+}
+
+.featured-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--secondary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.team-card:hover .card-inner {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.member-photo {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.team-card.featured .member-photo {
+    height: 300px;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .member-photo img {
+    transform: scale(1.05);
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 62, 80, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.team-card:hover .photo-overlay {
+    opacity: 1;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background: var(--secondary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.member-info {
+    padding: 20px;
+}
+
+.member-name {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.member-title {
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.member-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+}
+
+.member-years {
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.member-dept {
+    background: #f0f0f0;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.member-bio {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.member-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-profile, .btn-contact {
+    flex: 1;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-profile {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-profile:hover {
+    background: #1a252f;
+}
+
+.btn-contact {
+    background: #f0f0f0;
+    color: var(--primary-color);
+}
+
+.btn-contact:hover {
+    background: #e0e0e0;
+}
+
+/* Team CTA */
+.team-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.btn-view-all {
+    padding: 12px 30px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-view-all:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.team-stats {
+    display: flex;
+    gap: 30px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    display: block;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Org Chart CTA */
+.org-chart-cta {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 50px;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+}
+
+.org-chart-cta h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.org-chart-cta p {
+    color: #555;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-org-chart {
+    padding: 12px 25px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-org-chart:hover {
+    background: #2980b9;
+    transform: translateY(-3px);
+}
+
+.btn-org-chart i {
+    transition: transform 0.3s ease;
+}
+
+.btn-org-chart:hover i {
+    transform: translateX(5px);
+}
+
+/* Team Modal */
+.team-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.team-modal.active {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    z-index: 2;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: var(--secondary-color);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.modal-photo {
+    flex: 1;
+    min-width: 300px;
+}
+
+.modal-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-info {
+    flex: 1;
+    padding: 40px;
+}
+
+.modal-info h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.modal-title {
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.modal-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.modal-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.modal-social {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.modal-social a {
+    width: 40px;
+    height: 40px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.modal-social a:hover {
+    background: var(--secondary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.modal-bio {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.btn-contact {
+    padding: 12px 25px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-contact:hover {
+    background: #c0392b;
+    transform: translateY(-3px);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .team-card.featured {
+        grid-column: span 1;
+    }
+    
+    .modal-content {
+        flex-direction: column;
+        max-height: 90vh;
+    }
+    
+    .modal-photo {
+        height: 250px;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .team-filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .filter-group {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .team-cta {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .team-stats {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .member-actions {
+        flex-direction: column;
+    }
+    
+    .modal-info {
+        padding: 25px;
+    }
+}
+</style>
+ 
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">We'd love to hear from you. Reach out through any of these channels.</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-card">
+                    <h3 class="contact-heading">Contact Information</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">Phone</span>
+                            <a href="tel:+919940290394" class="info-value">+91 9940290394</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">Email</span>
+                            <a href="mailto:networkwelfareassociation@gmail.com" class="info-value">networkwelfareassociation@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-hours">
+                        <div class="info-icon">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">Availability</span>
+                            <span class="info-value">Monday - Friday: 10AM - 5PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h1 >
+                    “Voice Your Needs, We'll Take the Lead” </h1>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Team Filter Functionality
+    const departmentFilter = document.getElementById('department-filter');
+    const sortFilter = document.getElementById('sort-by');
+    const teamContainer = document.getElementById('team-container');
+    const teamCards = Array.from(document.querySelectorAll('.team-card'));
+    
+    function filterAndSortTeam() {
+        const departmentValue = departmentFilter.value;
+        const sortValue = sortFilter.value;
+        
+        // Filter by department
+        let filteredCards = teamCards;
+        if (departmentValue !== 'all') {
+            filteredCards = teamCards.filter(card => 
+                card.dataset.department === departmentValue
+            );
+        }
+        
+        // Sort cards
+        filteredCards.sort((a, b) => {
+            if (sortValue === 'name-asc') {
+                return a.querySelector('.member-name').textContent.localeCompare(
+                    b.querySelector('.member-name').textContent
+                );
+            } else if (sortValue === 'name-desc') {
+                return b.querySelector('.member-name').textContent.localeCompare(
+                    a.querySelector('.member-name').textContent
+                );
+            } else if (sortValue === 'seniority') {
+                return parseInt(b.dataset.seniority) - parseInt(a.dataset.seniority);
+            }
+            return 0;
+        });
+        
+        // Reattach sorted cards
+        teamContainer.innerHTML = '';
+        filteredCards.forEach(card => {
+            teamContainer.appendChild(card);
+        });
+    }
+    
+    departmentFilter.addEventListener('change', filterAndSortTeam);
+    sortFilter.addEventListener('change', filterAndSortTeam);
+    
+    // Load More Functionality
+    const loadMoreBtn = document.getElementById('load-more-members');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            // In a real implementation, this would load more team members via AJAX
+            this.textContent = 'All Members Loaded';
+            this.disabled = true;
+            this.style.opacity = '0.7';
+        });
+    }
+    
+    // Team Modal Functionality
+    const teamModal = document.getElementById('team-modal');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalClose = document.getElementById('modal-close');
+    const modalPhoto = document.getElementById('modal-photo');
+    const modalName = document.getElementById('modal-name');
+    const modalTitle = document.getElementById('modal-title');
+    const modalYears = document.getElementById('modal-years');
+    const modalDept = document.getElementById('modal-dept');
+    const modalSocial = document.getElementById('modal-social');
+    const modalBio = document.getElementById('modal-bio');
+    const modalContact = document.getElementById('modal-contact');
+    
+    function openTeamModal(card) {
+        const photoSrc = card.querySelector('.member-photo img').src;
+        const name = card.querySelector('.member-name').textContent;
+        const title = card.querySelector('.member-title').textContent;
+        const years = card.querySelector('.member-years').innerHTML;
+        const dept = card.querySelector('.member-dept').textContent;
+        const bio = card.querySelector('.member-bio').textContent;
+        const socialLinks = card.querySelector('.social-links').innerHTML;
+        
+        modalPhoto.src = photoSrc;
+        modalPhoto.alt = `Photo of ${name}`;
+        modalName.textContent = name;
+        modalTitle.textContent = title;
+        modalYears.innerHTML = years;
+        modalDept.textContent = dept;
+        modalBio.textContent = bio;
+        modalSocial.innerHTML = socialLinks;
+        
+        teamModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeTeamModal() {
+        teamModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Attach click events to profile buttons
+    document.querySelectorAll('.btn-profile').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const card = this.closest('.team-card');
+            openTeamModal(card);
+        });
+    });
+    
+    // Close modal events
+    modalOverlay.addEventListener('click', closeTeamModal);
+    modalClose.addEventListener('click', closeTeamModal);
+    
+    // Close on ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && teamModal.classList.contains('active')) {
+            closeTeamModal();
+        }
+    });
+    
+    // Calculate team stats
+    function calculateTeamStats() {
+        const totalMembers = teamCards.length;
+        const totalExperience = teamCards.reduce((sum, card) => {
+            return sum + parseInt(card.dataset.seniority);
+        }, 0);
+        
+        document.getElementById('total-members').textContent = totalMembers;
+        document.getElementById('total-experience').textContent = totalExperience;
+    }
+    
+    calculateTeamStats();
+});
+</script>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Logo Column (kept exactly as is) -->
+            <div class="footer-logo">
+                <h3>NWA</h3>
+                <p>Networkers Welfare Association</p>
+                <p>India's Voice for Genuine MLM.</p>
+                <!-- Added subtle social links
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div> -->
+            </div>
+
+            <!-- Quick Links Column (kept exactly as is) -->
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <!-- <li><a href="#members">Party Members</a></li> -->
+                    <li><a href="#about">About NWA</a></li>
+                    <li><a href="#news">News & Media</a></li>
+                    <li><a href="#Events">Events</a></li>
+                    <li><a href="#people">For the People</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Added Newsletter Column
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to our newsletter for the latest updates</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div> -->
+
+            <!-- Added Legal Links Column
+            <div class="footer-legal">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div> -->
+
+        <!-- Copyright (kept exactly as is) -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 NWA - Networkers Welfare Association. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    
+
+    <!-- Scripts -->
+    <script src="js/carousel.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/main.js"></script>
+
+    
+</body>
+</html>
