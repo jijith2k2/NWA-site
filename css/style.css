@@ -362,6 +362,8 @@ img {
 
 
 
+
+
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #3498db;
@@ -377,17 +379,23 @@ img {
 }
 
 .contact-section {
-    padding: 5rem 0;
+    padding: 4rem 1rem;
     background-color: var(--light-gray);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
 .section-title {
     text-align: center;
     color: var(--primary-color);
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     margin-bottom: 1rem;
     font-weight: 700;
 }
@@ -395,16 +403,19 @@ img {
 .section-subtitle {
     text-align: center;
     color: var(--text-light);
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     max-width: 700px;
     margin: 0 auto 3rem;
     line-height: 1.6;
+    padding: 0 1rem;
 }
 
 .contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    display: flex;
+    justify-content: center;
     gap: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .contact-info {
@@ -412,7 +423,9 @@ img {
     border-radius: 8px;
     box-shadow: var(--shadow);
     padding: 2rem;
-    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
 }
 
 .info-card {
@@ -423,7 +436,7 @@ img {
 
 .contact-heading {
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     margin-bottom: 1rem;
     position: relative;
     padding-bottom: 0.5rem;
@@ -472,7 +485,7 @@ img {
 
 .info-label {
     color: var(--text-light);
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
     margin-bottom: 0.3rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -480,7 +493,7 @@ img {
 
 .info-value {
     color: var(--text-color);
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     font-weight: 500;
     text-decoration: none;
     transition: var(--transition);
@@ -500,108 +513,76 @@ img {
     margin-top: 1rem;
 }
 
-.contact-form {
-    background: var(--white);
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    padding: 2rem;
-}
-
-.form-heading {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-.form-heading::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background-color: var(--secondary-color);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--dark-gray);
-    font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 1px solid var(--medium-gray);
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: var(--transition);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-}
-
-.form-group textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.submit-btn {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    border: none;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: var(--transition);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.submit-btn:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-}
-
-/* Responsive Design */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
+    .contact-section {
+        padding: 3rem 1rem;
+    }
+    
     .contact-container {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
     }
     
-    .section-title {
-        font-size: 2rem;
+    .contact-info {
+        padding: 1.5rem;
     }
-    
-    .section-subtitle {
-        font-size: 1rem;
-    }
+}
+
+.info-mail {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 13px;
 }
 
 @media (max-width: 480px) {
     .contact-section {
-        padding: 3rem 0;
+        padding: 2rem 0.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-subtitle {
+        margin-bottom: 2rem;
     }
     
     .info-item {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        padding: 0.8rem;
+    }
+    
+    .info-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+    
+    .contact-hours {
+        flex-direction: row;
     }
 }
+
+@media (max-width: 360px) {
+    .info-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .info-content {
+        align-items: center;
+    }
+    
+    .contact-heading::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}    
+
 
 /* Enhanced Footer Styles */
 .footer {
