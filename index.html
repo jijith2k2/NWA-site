@@ -1462,7 +1462,7 @@
         .media-scroller {
             display: flex;
             gap: 20px;
-            transition: transform 0.5s ease;
+            transition: transform 0.2s ease;
             padding: 10px 0;
         }
         
@@ -1474,7 +1474,7 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         
         .media-card:hover {
@@ -1487,7 +1487,7 @@
             height: 200px;
             object-fit: cover;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease;
         }
         
         .media-card img:hover {
@@ -1528,7 +1528,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.2s ease;
         }
         
         .scroll-left:hover, .scroll-right:hover {
@@ -1557,7 +1557,7 @@
             border-radius: 30px;
             text-decoration: none;
             font-weight: 500;
-            transition: background 0.3s ease;
+            transition: background 0.2s ease;
         }
         
         .more-news-btn:hover {
@@ -1610,7 +1610,7 @@
         }
         
         .media-card {
-            animation: fadeInUp 0.5s ease forwards;
+            animation: fadeInUp 0.3s ease forwards;
         }
         
         /* Responsive Styles */
@@ -1901,7 +1901,7 @@
                 // Set new interval - change slide every 4 seconds
                 autoScrollInterval = setInterval(() => {
                     nextSlide();
-                }, 4000);
+                }, 2000);
             }
             
             // Reset auto-scroll timer (call after manual navigation)
